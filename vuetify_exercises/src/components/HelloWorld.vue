@@ -1,16 +1,15 @@
 <template>
 	<v-container>
 		<v-layout text-center wrap>
-			<v-flex xs12>
+			<v-flex >
 				<v-img
 					:src="require('../assets/logo.svg')"
 					class="my-3"
 					contain
 					height="200"
 				></v-img>
-			</v-flex>			
-			<v-flex xs12>
-				<v-progress-circular indeterminate :color="colorFirst" :size="size" :width="width" >
+			
+				<v-progress-circular indeterminate :color="colorFirst" :size="size" :width="width" style="margin-top:75px;">
 					<v-progress-circular indeterminate :color="color" :size="calculatedSize" :width="width" >{{ text }}</v-progress-circular>
 				</v-progress-circular>				
 			</v-flex>
@@ -79,13 +78,22 @@ export default {
 	}),
 	created() {
 		setTimeout(() => {
-			this.text = "It will be endless"
+			this.text = "It will be endless";						
 			setTimeout(() => {
 			this.text = "What are u still looking for?";
 			this.size += 200;
 			this.width += 10;
 			this.color = "deep-orange lighten-1";
-			this.colorFirst = "orange accent-2";
+			this.colorFirst = "orange accent-2";	
+			this.$vuetify.theme.currentTheme.primary = '#eb7134';
+			setTimeout(() => {
+				this.text = "Ok lets go!";
+				setTimeout(() => {
+					this.$vuetify.theme.currentTheme.primary = '#1976D2';
+					this.$router.push({ name: 'login'});
+				}, 2000);
+				
+			}, 5000);		
 			}, 10000);
 		}, 5000);
 	},
