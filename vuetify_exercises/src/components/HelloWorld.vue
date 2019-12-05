@@ -89,7 +89,7 @@ export default {
 			setTimeout(() => {
 				this.text = "Ok lets go!";
 				setTimeout(() => {
-					this.$vuetify.theme.currentTheme.primary = '#1976D1';
+					this.$vuetify.theme.currentTheme.primary = '#1976D2';
 					this.$router.push({ name: 'login'});
 				}, 2000);
 				
